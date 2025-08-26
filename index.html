@@ -11,6 +11,7 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
         }
         /* Estilo para a barra de rolagem */
         ::-webkit-scrollbar {
@@ -79,26 +80,29 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg>
                 </a>
             </div>
-            <!-- Seletor de Idioma -->
             <div id="language-selector" class="flex items-center gap-3">
                 <span class="flag-btn text-2xl" data-lang="pt">🇧🇷</span>
                 <span class="flag-btn text-2xl" data-lang="en">🇺🇸</span>
-                <span class="flag-btn text-2xl" data-lang="es">🇪🇸</span>
+                <span class="flag-btn text-2xl" data-lang="es">🇦🇷</span>
             </div>
         </div>
 
-        <!-- Cabeçalho -->
         <header class="text-center my-6">
-            <h1 class="text-3xl font-bold text-blue-900" data-translate-key="title">Arena Pipa Beach - Horários</h1>
-            <p class="text-gray-500 mt-1" data-translate-key="subtitle">Selecione um dia ou filtre por atividade</p>
+             <h1 class="text-5xl font-bold text-blue-900" style="font-family: 'Inter', sans-serif;">Arena Pipa Beach</h1>
+            <p class="text-gray-600 mt-4 max-w-xl mx-auto" data-translate-key="subtitle">Aqui você encontra a tabela completa de horários da arena para aulas, day-use, locação ou membros.</p>
         </header>
 
-        <!-- Controles: Filtro e Visualização -->
+        <!-- Botões de Acesso Rápido -->
+        <div class="flex justify-center flex-wrap gap-4 my-6">
+            <a href="https://arenapipabeach.my.canva.site/horarios-arena" target="_blank" class="bg-yellow-400 text-yellow-900 font-semibold py-2 px-5 rounded-lg shadow-md hover:bg-yellow-500 transition-colors" data-translate-key="horarios_button">📅 Horários (Tabela)</a>
+            <a href="https://arenapipabeach.my.canva.site/regras-arena" target="_blank" class="bg-yellow-400 text-yellow-900 font-semibold py-2 px-5 rounded-lg shadow-md hover:bg-yellow-500 transition-colors" data-translate-key="regras_button">📋 Regras da Arena</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=R.+Albacora,Tibau+do+Sul,Pipa" target="_blank" class="bg-yellow-400 text-yellow-900 font-semibold py-2 px-5 rounded-lg shadow-md hover:bg-yellow-500 transition-colors" data-translate-key="localizacao_button">📍 Localização</a>
+        </div>
+
         <div class="flex flex-col sm:flex-row gap-4 mb-6">
             <button id="now-button" class="w-full sm:w-auto bg-sky-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-sky-600 transition-colors" data-translate-key="now_button">O que está rolando agora?</button>
             <div class="flex-grow">
                 <select id="activity-filter" class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-sky-500 focus:border-sky-500 h-full">
-                    <!-- Opções de filtro serão inseridas aqui -->
                 </select>
             </div>
             <div>
@@ -109,31 +113,24 @@
             </div>
         </div>
 
-
-        <!-- Seletor de Dias (Apenas na visualização diária) -->
         <nav id="day-selector-nav" class="bg-white rounded-xl shadow-md p-2 mb-6 sticky top-4 z-10">
             <div id="day-selector" class="flex justify-around items-center">
-                <!-- Botões dos dias serão inseridos aqui -->
             </div>
         </nav>
 
-        <!-- Legenda das Quadras -->
         <div id="legend" class="text-center text-sm text-gray-500 mb-4">
             <p data-translate-key="legend_full">Legenda: Q1 = Quadra 1 | Q2 = Quadra 2</p>
         </div>
 
-        <!-- Grade de Horários -->
         <main id="schedule-grid" class="flex-grow">
-            <!-- Os horários do dia selecionado aparecerão aqui -->
         </main>
         
-        <!-- Rodapé -->
         <footer class="text-center text-gray-400 text-sm py-4 mt-6">
             <p>&copy; 2024 Arena Pipa Beach</p>
+            <p>R. Albacora - Pipa, Tibau do Sul - RN</p>
         </footer>
     </div>
     
-    <!-- Modal Domingo -->
     <div id="sunday-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
         <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 text-center">
             <h2 class="text-2xl font-bold text-blue-900 mb-4" data-translate-key="sunday_title">Domingo de Descanso!</h2>
@@ -142,16 +139,22 @@
         </div>
     </div>
 
+    <div id="closed-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 text-center">
+            <h2 class="text-2xl font-bold text-blue-900 mb-4" data-translate-key="closed_title">Arena Fechada!</h2>
+            <p class="text-gray-700 mb-6" data-translate-key="closed_message">Bora descansar que amanhã estamos de volta às 07:00!</p>
+            <button id="close-closed-modal" class="w-full bg-sky-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-sky-600 transition-colors">OK</button>
+        </div>
+    </div>
 
     <script>
-        // Dados da planilha atualizados
         const scheduleData = {
             'Segunda-feira': [
-                { time: '07:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '08:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '09:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '10:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '11:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '12:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '13:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '14:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '15:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '16:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Interm./Avançado' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '17:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Iniciante' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }, { time: '18:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Intermediário' }, { court: 'Q2', name: 'Futvôlei - Aula Interm.' }] }, { time: '19:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Iniciante' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }, { time: '20:00:00', activities: [{ court: 'Q1', name: 'BT (Day-use/sócio)' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }, { time: '21:00:00', activities: [{ court: 'Q1', name: 'BT (Day-use/sócio)' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }
+                { time: '07:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '08:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '09:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '10:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '11:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '12:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '13:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '14:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '15:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '16:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Interm./Avançado' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '17:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Iniciante' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }, { time: '18:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Intermediário' }, { court: 'Q2', name: 'Futvôlei - Aula Interm. (até 19:30)' }] }, { time: '19:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Iniciante' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }, { time: '20:00:00', activities: [{ court: 'Q1', name: 'BT (Day-use/sócio)' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }, { time: '21:00:00', activities: [{ court: 'Q1', name: 'BT (Day-use/sócio)' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }
             ], 'Terça-feira': [
-                { time: '07:00:00', activities: [{ court: 'Q1', name: 'Futvôlei - Aula Avançado' }, { court: 'Q2', name: 'BT (Day-use/sócio)' }] }, { time: '08:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Iniciante' }, { court: 'Q2', name: 'Vôlei - Aula' }] }, { time: '09:00:00', activities: [{ court: 'Q1', name: 'BT (Day-use/sócio)' }, { court: 'Q2', name: 'Vôlei (Day-use/Sócio)' }] }, { time: '10:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '11:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '12:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '13:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '14:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '15:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '16:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '17:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Intermediário' }, { court: 'Q2', name: 'Vôlei (Day-use/Sócio)' }] }, { time: '18:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Iniciante' }, { court: 'Q2', name: 'Vôlei (Day-use/Sócio)' }] }, { time: '19:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Iniciante' }, { court: 'Q2', name: 'Altinha - Aula Iniciante' }] }, { time: '20:00:00', activities: [{ court: 'Q1', name: 'Vôlei (Day-use/Sócio)' }, { court: 'Q2', name: 'Vôlei (Day-use/Sócio)' }] }, { time: '21:00:00', activities: [{ court: 'Q1', name: 'Vôlei (Day-use/Sócio)' }, { court: 'Q2', name: 'Vôlei (Day-use/Sócio)' }] }
+                { time: '07:00:00', activities: [{ court: 'Q1', name: 'BT (Day-use/sócio)' }, { court: 'Q2', name: 'Futvôlei - Aula Avançado' }] }, { time: '08:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Iniciante' }, { court: 'Q2', name: 'Vôlei - Aula' }] }, { time: '09:00:00', activities: [{ court: 'Q1', name: 'BT (Day-use/sócio)' }, { court: 'Q2', name: 'Vôlei (Day-use/Sócio)' }] }, { time: '10:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '11:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '12:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '13:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '14:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '15:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '16:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '17:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Intermediário' }, { court: 'Q2', name: 'Vôlei (Day-use/Sócio)' }] }, { time: '18:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Iniciante' }, { court: 'Q2', name: 'Vôlei (Day-use/Sócio)' }] }, { time: '19:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Iniciante' }, { court: 'Q2', name: 'Altinha - Aula Iniciante' }] }, { time: '20:00:00', activities: [{ court: 'Q1', name: 'Vôlei (Day-use/Sócio)' }, { court: 'Q2', name: 'Vôlei (Day-use/Sócio)' }] }, { time: '21:00:00', activities: [{ court: 'Q1', name: 'Vôlei (Day-use/Sócio)' }, { court: 'Q2', name: 'Vôlei (Day-use/Sócio)' }] }
             ], 'Quarta-feira': [
-                { time: '07:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '08:00:00', activities: [{ court: 'Q1', name: 'BT (Day-use/sócio)' }, { court: 'Q2', name: 'Vôlei - Aula' }] }, { time: '09:00:00', activities: [{ court: 'Q1', name: 'BT (Day-use/sócio)' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }, { time: '10:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '11:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '12:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '13:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '14:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '15:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '16:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Interm./Avançado' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '17:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Iniciante' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }, { time: '18:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Intermediário' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }, { time: '19:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Iniciante' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }, { time: '20:00:00', activities: [{ court: 'Q1', name: 'BT (Day-use/sócio)' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }, { time: '21:00:00', activities: [{ court: 'Q1', name: 'BT (Day-use/sócio)' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }
+                { time: '07:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '08:00:00', activities: [{ court: 'Q1', name: 'BT (Day-use/sócio)' }, { court: 'Q2', name: 'Vôlei - Aula' }] }, { time: '09:00:00', activities: [{ court: 'Q1', name: 'BT (Day-use/sócio)' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }, { time: '10:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '11:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '12:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '13:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '14:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '15:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '16:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Interm./Avançado' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '17:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Iniciante' }, { court: 'Q2', name: 'Vôlei (Day-use/Sócio)' }] }, { time: '18:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Intermediário' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }, { time: '19:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Iniciante' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }, { time: '20:00:00', activities: [{ court: 'Q1', name: 'BT (Day-use/sócio)' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }, { time: '21:00:00', activities: [{ court: 'Q1', name: 'BT (Day-use/sócio)' }, { court: 'Q2', name: 'Futvôlei (Day-use/Sócio)' }] }
             ], 'Quinta-feira': [
                 { time: '07:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '08:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Iniciante' }, { court: 'Q2', name: 'Vôlei - Aula' }] }, { time: '09:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Iniciante' }, { court: 'Q2', name: 'Vôlei (Day-use/Sócio)' }] }, { time: '10:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '11:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '12:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '13:00:00', activities: [{ court: 'Q1/Q2', name: 'Locação' }] }, { time: '14:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '15:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '16:00:00', activities: [{ court: 'Q1', name: 'Day-use/Sócio' }, { court: 'Q2', name: 'Day-use/Sócio' }] }, { time: '17:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Intermediário' }, { court: 'Q2', name: 'Vôlei (Day-use/Sócio)' }] }, { time: '18:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Iniciante' }, { court: 'Q2', name: 'Vôlei (Day-use/Sócio)' }] }, { time: '19:00:00', activities: [{ court: 'Q1', name: 'BT - Aula Iniciante' }, { court: 'Q2', name: 'Altinha - Aula Iniciante' }] }, { time: '20:00:00', activities: [{ court: 'Q1', name: 'Vôlei (Day-use/Sócio)' }, { court: 'Q2', name: 'Vôlei (Day-use/Sócio)' }] }, { time: '21:00:00', activities: [{ court: 'Q1', name: 'Vôlei (Day-use/Sócio)' }, { court: 'Q2', name: 'Vôlei (Day-use/Sócio)' }] }
             ], 'Sexta-feira': [
@@ -183,14 +186,16 @@
         // --- Traduções ---
         const translations = {
             pt: {
-                title: "Arena Pipa Beach - Horários",
-                subtitle: "Selecione um dia ou filtre por atividade",
+                subtitle: "Aqui você encontra a tabela completa de horários da arena para aulas, day-use, locação ou membros.",
                 filter_label: "Filtrar por Atividade",
                 view_label: "Visualização",
                 daily_view: "Diário",
                 weekly_view: "Semanal",
                 legend_full: "Legenda: Q1 = Quadra 1 | Q2 = Quadra 2",
                 now_button: "O que está rolando agora?",
+                horarios_button: "📅 Horários (Tabela)",
+                regras_button: "📋 Regras da Arena",
+                localizacao_button: "📍 Localização",
                 all_activities: "Todas as Atividades",
                 aula: "Aula",
                 day_use: "Day-use/Sócio",
@@ -199,20 +204,24 @@
                 sunday_title: "Domingo de Descanso!",
                 sunday_message: "Hoje é dia de descanso na Arena!",
                 see_monday: "Ver programação de Segunda",
+                closed_title: "Arena Fechada!",
+                closed_message: "Bora descansar que amanhã estamos de volta às 07:00!",
                 sports: { 'bt': 'BT', 'futvôlei': 'Futvôlei', 'vôlei': 'Vôlei', 'altinha': 'Altinha', 'day use': 'Day Use' },
                 levels: { 'iniciante': 'Iniciante', 'intermediário': 'Intermediário', 'interm./avançado': 'Interm./Avançado', 'avançado': 'Avançado' },
                 days: { 'Segunda-feira': 'Segunda-feira', 'Terça-feira': 'Terça-feira', 'Quarta-feira': 'Quarta-feira', 'Quinta-feira': 'Quinta-feira', 'Sexta-feira': 'Sexta-feira', 'Sábado': 'Sábado' },
                 day_abbr: { 'Segunda-feira': 'Seg', 'Terça-feira': 'Ter', 'Quarta-feira': 'Qua', 'Quinta-feira': 'Qui', 'Sexta-feira': 'Sex', 'Sábado': 'Sáb' }
             },
             en: {
-                title: "Arena Pipa Beach - Schedule",
-                subtitle: "Select a day or filter by activity",
+                subtitle: "Here you will find the complete arena schedule for classes, day-use, rentals, or members.",
                 filter_label: "Filter by Activity",
                 view_label: "View",
                 daily_view: "Daily",
                 weekly_view: "Weekly",
                 legend_full: "Legend: Q1 = Court 1 | Q2 = Court 2",
                 now_button: "What's happening now?",
+                horarios_button: "📅 Schedule (Table)",
+                regras_button: "📋 Arena Rules",
+                localizacao_button: "📍 Location",
                 all_activities: "All Activities",
                 aula: "Class",
                 day_use: "Day-use/Member",
@@ -221,20 +230,24 @@
                 sunday_title: "Rest Day Sunday!",
                 sunday_message: "Today is a rest day at the Arena!",
                 see_monday: "See Monday's Schedule",
+                closed_title: "Arena Closed!",
+                closed_message: "Time to rest! We'll be back tomorrow at 07:00 AM!",
                 sports: { 'bt': 'Beach Tennis', 'futvôlei': 'Footvolley', 'vôlei': 'Beach Volleyball', 'altinha': 'Altinha', 'day use': 'Day Use' },
                 levels: { 'iniciante': 'Beginner', 'intermediário': 'Intermediate', 'interm./avançado': 'Int./Advanced', 'avançado': 'Advanced' },
                 days: { 'Segunda-feira': 'Monday', 'Terça-feira': 'Tuesday', 'Quarta-feira': 'Wednesday', 'Quinta-feira': 'Thursday', 'Sexta-feira': 'Friday', 'Sábado': 'Saturday' },
                 day_abbr: { 'Segunda-feira': 'Mon', 'Terça-feira': 'Tue', 'Quarta-feira': 'Wed', 'Quinta-feira': 'Thu', 'Sexta-feira': 'Fri', 'Sábado': 'Sat' }
             },
             es: {
-                title: "Arena Pipa Beach - Horarios",
-                subtitle: "Seleccione un día o filtre por actividad",
+                subtitle: "Aquí encontrarás el horario completo de la arena para clases, uso diario, alquileres o miembros.",
                 filter_label: "Filtrar por Actividad",
                 view_label: "Vista",
                 daily_view: "Diario",
                 weekly_view: "Semanal",
                 legend_full: "Leyenda: Q1 = Cancha 1 | Q2 = Cancha 2",
                 now_button: "¿Qué está pasando ahora?",
+                horarios_button: "📅 Horarios (Tabla)",
+                regras_button: "📋 Reglas de la Arena",
+                localizacao_button: "📍 Ubicación",
                 all_activities: "Todas las Actividades",
                 aula: "Clase",
                 day_use: "Uso Diario/Socio",
@@ -243,6 +256,8 @@
                 sunday_title: "¡Domingo de Descanso!",
                 sunday_message: "¡Hoy es día de descanso en la Arena!",
                 see_monday: "Ver el horario del Lunes",
+                closed_title: "¡Arena Cerrada!",
+                closed_message: "¡A descansar! ¡Mañana volvemos a las 07:00!",
                 sports: { 'bt': 'Tenis de Playa', 'futvôlei': 'Futvóley', 'vôlei': 'Voleibol de Playa', 'altinha': 'Altinha', 'day use': 'Uso Diario' },
                 levels: { 'iniciante': 'Principiante', 'intermediário': 'Intermedio', 'interm./avançado': 'Int./Avanzado', 'avançado': 'Avanzado' },
                 days: { 'Segunda-feira': 'Lunes', 'Terça-feira': 'Martes', 'Quarta-feira': 'Miércoles', 'Quinta-feira': 'Jueves', 'Sexta-feira': 'Viernes', 'Sábado': 'Sábado' },
@@ -301,7 +316,7 @@
             };
 
             for (const [key, value] of Object.entries(termMap)) {
-                const regex = new RegExp(key, 'gi');
+                const regex = new RegExp(key.replace(/[/.]/g, '\\$&'), 'gi');
                 translatedText = translatedText.replace(regex, value);
             }
             
@@ -530,7 +545,9 @@
             
             document.querySelectorAll('[data-translate-key]').forEach(el => {
                 const key = el.dataset.translateKey;
-                el.textContent = translations[lang][key];
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
             });
             
             daySelector.querySelectorAll('button').forEach(button => {
@@ -595,15 +612,20 @@
             nowButton.addEventListener('click', () => {
                 const now = new Date();
                 const dayIndex = now.getDay();
-                
+                const currentHour = now.getHours();
+
                 if (dayIndex === 0) { // Sunday
                     sundayModal.classList.remove('hidden');
                     return;
                 }
+                
+                if (currentHour >= 22) { // After 10 PM
+                    document.getElementById('closed-modal').classList.remove('hidden');
+                    return;
+                }
 
                 const currentDayName = dayMap[dayIndex] || 'Segunda-feira';
-                const currentHour = now.getHours();
-
+                
                 state.currentDay = currentDayName;
                 state.currentView = 'daily';
                 
@@ -633,10 +655,21 @@
             });
 
             sundayModal.addEventListener('click', (e) => {
-                if (e.target === sundayModal) {
+                if (e.target === sundayModal || e.target.id === 'see-monday-button') {
                     sundayModal.classList.add('hidden');
                 }
             });
+            
+            const closedModal = document.getElementById('closed-modal');
+            document.getElementById('close-closed-modal').addEventListener('click', () => {
+                closedModal.classList.add('hidden');
+            });
+            closedModal.addEventListener('click', (e) => {
+                if (e.target === closedModal) {
+                    closedModal.classList.add('hidden');
+                }
+            });
+
 
             // Initial setup
             setLanguage('pt'); // Default language
